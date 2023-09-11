@@ -1,0 +1,23 @@
+.test-entry-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid var(--color-gray-300);
+    border-radius: 8px;
+    padding: 30px;
+}
+
+.test-entry-card--valid {
+    border-color: var(--color-success);
+}
+
+.test-entry-card--invalid {
+    border-color: var(--color-error);
+}
+
+.test-entry-card--warning {
+    border-color: var(--color-warning);
+}
