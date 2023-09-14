@@ -8,7 +8,7 @@ const Home = ()=> {
   const testResults = useSelector(state => state.testResults.testResults)
 
   return (
-    <main className="container">
+    <main className="container" style={{paddingTop: '64px'}}>
       <TestForm/>
       <div className="grid">
         {testResults && Object.keys(testResults).map((key, index)=> {
@@ -19,4 +19,4 @@ const Home = ()=> {
   )
 }
 
-export default Home;
+export default Home
