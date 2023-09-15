@@ -36,6 +36,13 @@
     font-size: 16px;
 }
 
+.test-form__input:disabled {
+    background-color: var(--color-gray-200);
+    border: 1px solid var(--color-gray-300);
+    color: var(--color-gray-400);
+    cursor: not-allowed;
+}
+
 .test-form__submit-button {
     padding: 8px 16px;
     border: 1px solid var(--color-gray-300);
@@ -48,4 +55,11 @@
 
 .test-form__submit-button:hover {
     background-color: var(--color-primary-dark);
+}
+
+.test-form__submit-button:disabled {
+    background-color: var(--color-gray-200);
+    border: 1px solid var(--color-gray-300);
+    color: var(--color-gray-400);
+    cursor: not-allowed;
 }

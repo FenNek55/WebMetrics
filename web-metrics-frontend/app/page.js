@@ -1,20 +1,16 @@
 "use client"
 
-import TestEntryCard from "./components/TestEntryCard/TestEntryCard"
-import { useSelector } from "react-redux"
 import TestForm from "./components/TestForm/TestForm"
+import TestResults from "./components/TestResults/TestResults"
+import { useSelector } from "react-redux"
 
 const Home = ()=> {
-  const testResults = useSelector(state => state.testResults.testResults)
+  const storedTestResults = useSelector(state => state.testResults.testResults)
 
   return (
     <main className="container" style={{paddingTop: '64px'}}>
       <TestForm/>
-      <div className="grid">
-        {testResults && Object.keys(testResults).map((key, index)=> {
-          return <TestEntryCard key={index} title={key} data={testResults[key]} />
-        })}
-      </div>
+      <TestResults testResults={storedTestResults}/>
     </main>
   )
 }

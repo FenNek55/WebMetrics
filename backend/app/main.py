@@ -1,7 +1,9 @@
 from fastapi import WebSocket
 from fastapi import FastAPI
-from selenium_testing.testrunner import TestRunner
-from selenium_testing.local_drivers import get_local_chrome_driver
+from webmetrics.testrunner import TestRunner
+from webmetrics.models.response import ResponseError
+from webmetrics.local_drivers import get_local_chrome_driver
+from webmetrics.utility.validators import validate_url
 
 app = FastAPI()
 
@@ -12,13 +14,20 @@ async def websocket_endpoint(websocket: WebSocket, client_id: int):
 
     while True:
         data = await websocket.receive_text()
-        url = data.strip() 
-        #assume that the data is a url
+        url = data.strip()
+        
+        if not validate_url(url):
+            await websocket.send_json(ResponseError(
+                error="Invalid URL",
+                url=url,
+                status="error",
+            ).model_dump())
+
+            await websocket.close()
+            break
 
         response = testrunner.get_page_test_results(url)
-
         await websocket.send_json(response.model_dump())
-
         await websocket.close()
         break
 

@@ -3,7 +3,8 @@
 import styles from './TestForm.module.css';
 import { useState } from 'react'
 import { setTestResults } from "@/app/redux/features/testResults"
-import { useDispatch } from 'react-redux';
+import { setTestResultsAreLoading } from '@/app/redux/features/loadingState';
+import { useDispatch, useSelector } from 'react-redux';
 
 const validateUrl = (url) => {
   if (!url) return {
@@ -27,6 +28,8 @@ const TestForm = () => {
     const [url, setUrl] = useState('')
     const [error, setError] = useState('')
 
+    const testResultsAreLoading = useSelector(state => state.loadingState.testResultsAreLoading)
+
     const dispatch = useDispatch()
 
     const handleUrlChange = (e) => {
@@ -45,6 +48,7 @@ const TestForm = () => {
       }
 
       const ws = new WebSocket(wsUrl)
+      dispatch(setTestResultsAreLoading(true))
   
       ws.onopen = () => {
         ws.send(url)
@@ -53,26 +57,27 @@ const TestForm = () => {
       ws.onmessage = (e) => {
         console.log(e.data)
   
-        //check if data is in json format
         try {
           const data = JSON.parse(e.data)
           dispatch(setTestResults(data))
+          dispatch(setTestResultsAreLoading(false))
           console.log(data)
         } catch (error) {
-          console.log(error)
+          dispatch(setTestResultsAreLoading(false))
         }
       }
     }
 
     return (
         <form onSubmit={runTest} className={styles['test-form']}>
-            <div className={`${styles['test-form__input-group']} ${error ? styles['test-form__input-group--error'] : ''}`}>
+            <div className={
+                `${styles['test-form__input-group']} ${error ? styles['test-form__input-group--error'] : ''}`}>
                 <label className={styles['test-form__label']} htmlFor='url'>Website URL</label>
-                <input onChange={handleUrlChange} className={styles['test-form__input']} id='url' name='url' type='text' />
+                <input disabled={testResultsAreLoading} onChange={handleUrlChange} className={styles['test-form__input']} id='url' name='url' type='text' />
                 <p className={styles['test-form__error']}>{error}</p>
             </div>
 
-            <button className={styles['test-form__submit-button']} type='submit'>Run test</button>
+            <button disabled={testResultsAreLoading} className={styles['test-form__submit-button']} type='submit'>{testResultsAreLoading ? "Running tests..." : "Run tests"}</button>
         </form>
     )
 }

@@ -22,3 +22,5 @@ class Response(BaseResponse):
     twitter_description: str
     twitter_image: str
 
+class ResponseError(BaseResponse):
+    error: str

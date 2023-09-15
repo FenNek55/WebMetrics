@@ -1,24 +1,28 @@
+/* HTML: <div class="loader"></div> */
 .loader {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: #FF3D00;
-    position: relative;
-  }
-  .loader:before,
-  .loader:after {
-    content: "";
-    position: absolute;
-    border-radius: 50%;
-    inset: 0;
-    background: #fff;
-    transform: rotate(0deg) translate(30px);
-    animation: rotate 1s ease infinite;
-  }
-  .loader:after {
-    animation-delay: 0.5s
-  }
-  @keyframes rotate {
-    100% {transform: rotate(360deg) translate(30px)
-  }
-}  
+  width: 17px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--color-primary);
+  display: grid;
+  animation: l22-0 2s infinite linear;
+}
+.loader:before,
+.loader:after {
+  content: "";
+  grid-area: 1/1;
+  margin: 15%;
+  border-radius: 50%;
+  background: inherit;
+  transform: rotate(0deg) translate(150%);
+  animation: l22 1s infinite;
+}
+.loader:after {
+  animation-delay: -.5s
+}
+@keyframes l22-0 {
+  100% {transform: rotate(1turn)}
+}
+@keyframes l22 {
+  100% {transform: rotate(1turn) translate(150%)}
+}

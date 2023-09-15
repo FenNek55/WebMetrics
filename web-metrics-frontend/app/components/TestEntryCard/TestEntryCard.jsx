@@ -1,6 +1,6 @@
 import styles from './TestEntryCard.module.css';
 
-const TestEntryCard = ({ title, data, validityLevel, validityMessage}) => {
+const TestEntryCard = ({ title, data }) => {
     return (
         <div className={styles['test-entry-card']}>
             <h2 className={styles['test-entry-card__title']}>{title}</h2>
