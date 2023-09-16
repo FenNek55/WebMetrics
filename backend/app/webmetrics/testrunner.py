@@ -35,8 +35,6 @@ class TestRunner:
             og_description = driver_scripts.get_og_description(self.driver),
             og_image = driver_scripts.get_og_image(self.driver),
             twitter_card = driver_scripts.get_twitter_card(self.driver),
-            twitter_domain = driver_scripts.get_twitter_domain(self.driver),
-            twitter_url = driver_scripts.get_twitter_url(self.driver),
             twitter_title = driver_scripts.get_twitter_title(self.driver),
             twitter_description = driver_scripts.get_twitter_description(self.driver),
             twitter_image = driver_scripts.get_twitter_image(self.driver),

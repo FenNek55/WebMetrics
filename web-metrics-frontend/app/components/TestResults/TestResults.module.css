@@ -12,3 +12,15 @@
     width: 100%;
     padding-top: 120px;
 }
+
+.test-results__cards-wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+}
+
+.test-results__og-image {
+    margin-top: 12px;
+    width: 100%;
+    height: auto;
+}

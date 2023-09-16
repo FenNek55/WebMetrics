@@ -16,8 +16,6 @@ class Response(BaseResponse):
     og_description: str
     og_image: str
     twitter_card: str
-    twitter_domain: str
-    twitter_url: str
     twitter_title: str
     twitter_description: str
     twitter_image: str
