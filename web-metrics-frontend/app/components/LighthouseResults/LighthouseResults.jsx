@@ -11,9 +11,9 @@ const getScoreColor = (score) => {
 }
 
 const scoreColorToVar = (scoreColor) => {
-    if (scoreColor === 'green') return '--color-success'
-    if (scoreColor === 'orange') return '--color-warning'
-    return '--color-danger'
+    if (scoreColor === 'green') return 'var(--color-success)'
+    if (scoreColor === 'orange') return 'var(--color-warning)'
+    return 'var(--color-danger)'
 }
 
 const getMainAuditsWithMetadata = (lighthouseResults) => {
@@ -74,8 +74,10 @@ const getProgressbarStyles = (score) => {
             stroke: '#d6d6d6'
         },
         text: {
-            fill: getScoreColor(score),
-            fontSize: '1.5rem'
+            fontSize: '1.5rem',
+            color: scoreColorToVar(getScoreColor(score)),
+            fill: scoreColorToVar(getScoreColor(score)),
+            fontWeight: 'bold'
         }
     }
 }

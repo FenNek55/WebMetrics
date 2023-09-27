@@ -85,3 +85,10 @@ p {
   font-weight: 400;
   line-height: 1.5;
 }
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}

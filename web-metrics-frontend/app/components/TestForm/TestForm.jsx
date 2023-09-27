@@ -53,6 +53,14 @@ const TestForm = () => {
       ws.onopen = () => {
         ws.send(url)
       }
+
+      ws.onclose = () => {
+        dispatch(setTestResultsAreLoading(false))
+        dispatch(setTestResults({
+          url: url,
+          status: 'Server error'
+        }))
+      }
   
       ws.onmessage = (e) => {
         console.log(e.data)
