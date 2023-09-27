@@ -24,7 +24,7 @@ const validateUrl = (url) => {
 }
 
 const TestForm = () => {
-    const wsUrl = 'ws://localhost:8080/ws/123'
+    const wsUrl = 'ws://localhost:8080/?token=123'
     const [url, setUrl] = useState('')
     const [error, setError] = useState('')
 

@@ -5,8 +5,8 @@
   --color-error: #ff3d3d;
   --color-warning: #ecc94b;
 
-  --color-primary: #3e9bff;
-  --color-primary-dark: #2a7fff;
+  --color-primary: #0c81ff;
+  --color-primary-dark: #0059e0;
 
   --color-gray-100: #f7fafc;
   --color-gray-200: #edf2f7;
@@ -23,6 +23,11 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+body {
+  background-color: var(--color-gray-900);
+  color: var(--color-gray-100);
 }
 
 .container {

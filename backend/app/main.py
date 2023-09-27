@@ -4,11 +4,16 @@ from webmetrics.testrunner import TestRunner
 from webmetrics.models.response import ResponseError
 from webmetrics.local_drivers import get_local_chrome_driver
 from webmetrics.utility.validators import validate_url
+from webmetrics.utility.load_env import load_env_variables
+
+load_env_variables()
 
 app = FastAPI()
 
-@app.websocket("/ws/{client_id}")
-async def websocket_endpoint(websocket: WebSocket, client_id: int):
+@app.websocket("/")
+async def websocket_endpoint(
+    websocket: WebSocket,
+):
     await websocket.accept()
     testrunner = TestRunner(get_local_chrome_driver())
 

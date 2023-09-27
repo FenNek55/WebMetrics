@@ -4,6 +4,7 @@
     display: block;
     border: none;
     border-bottom: 1px solid var(--color-gray-300);
+    color: var(--color-gray-100);
     outline: none;
     text-align: left;
     background-color: transparent;

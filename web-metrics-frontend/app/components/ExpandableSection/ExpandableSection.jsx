@@ -10,7 +10,7 @@ const ExpandableSection = ({children, title}) => {
 
     return (
         <section className={`${styles['expandable-section']} ${isExpanded ? styles['expandable-section--open'] : ''}`}>
-            <button onClick={handleButtonClick} className={styles['expandable-section__button']}><h2>{title}</h2></button>
+            <button onClick={handleButtonClick} className={styles['expandable-section__button']}><h3>{title}</h3></button>
             <div className={styles['expandable-section__content']}>
                 {children}
             </div>

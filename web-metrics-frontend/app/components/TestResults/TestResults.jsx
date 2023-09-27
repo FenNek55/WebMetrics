@@ -3,7 +3,6 @@ import styles from './TestResults.module.css'
 import BaseLoader from "../Base/BaseLoader/BaseLoader"
 import { useSelector } from "react-redux"
 import ExpandableSection from "../ExpandableSection/ExpandableSection"
-import Image from "next/image"
 
 const TestResults = ({ testResults }) => {
     const testResultsAreLoading = useSelector(state => state.loadingState.testResultsAreLoading)
@@ -18,12 +17,10 @@ const TestResults = ({ testResults }) => {
             {(testResults && !testResultsAreLoading) && (
                 <>
                     <h1>Test results:</h1>
-                    <ExpandableSection title="Request info">
-                        <div className={styles["test-results__cards-wrapper"]}>
-                            <TestEntryCard title="Tested URL" data={testResults['url']} />
-                            <TestEntryCard title="Status" data={testResults['status']} />
-                        </div>
-                    </ExpandableSection>
+                    <h2>Request info</h2>
+                    <TestEntryCard title="Tested URL" data={testResults['url']} />
+                    <TestEntryCard title="Status" data={testResults['status']} />
+                    <h2>Meta tags</h2>
                     <ExpandableSection title="Meta">
                         <div className={styles["test-results__cards-wrapper"]}>
                             <TestEntryCard title="Title" data={testResults['title']} />

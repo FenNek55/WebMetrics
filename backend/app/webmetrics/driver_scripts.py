@@ -1,4 +1,5 @@
 from selenium import webdriver
+import json
 
 js_get_favicon = '''
     var favicon = undefined;
@@ -19,23 +20,6 @@ def execute_script_exception_handler(script, driver, alternative_value=''):
         return driver.execute_script(script)
     except:
         return alternative_value
-    
-    # num_images: int
-    # num_images_no_alt: int
-    # favicon: str
-    # title: str
-    # meta_description: str
-    # og_url: str
-    # og_type: str
-    # og_title: str
-    # og_description: str
-    # og_image: str
-    # twitter_card: str
-    # twitter_domain: str
-    # twitter_url: str
-    # twitter_title: str
-    # twitter_description: str
-    # twitter_image: str
 
 def get_number_of_images(driver: webdriver.Remote):
     return int(execute_script_exception_handler("return document.querySelectorAll('img').length", driver, 0))

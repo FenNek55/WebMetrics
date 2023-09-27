@@ -1,5 +1,9 @@
 from pydantic import BaseModel
 
+class Metrics(BaseModel):
+    name: str
+    value: float
+
 class BaseResponse(BaseModel):
     url: str
     status: str
@@ -19,6 +23,7 @@ class Response(BaseResponse):
     twitter_title: str
     twitter_description: str
     twitter_image: str
+    google_pagespeed: dict
 
 class ResponseError(BaseResponse):
     error: str
