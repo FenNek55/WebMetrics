@@ -18,7 +18,7 @@ const Home = ()=> {
         <BaseLoader/>
       </div>
       )}
-      {storedTestResults?.google_pagespeed && <LighthouseResults lighthouseResults={storedTestResults?.google_pagespeed?.lighthouseResult}/>}
+      {storedTestResults && <LighthouseResults lighthouseResults={storedTestResults.google_pagespeed.lighthouseResult}/>}
       {storedTestResults && <TestResults testResults={storedTestResults}/>}
     </main>
   )

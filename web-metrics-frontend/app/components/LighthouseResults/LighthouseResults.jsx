@@ -17,6 +17,7 @@ const scoreColorToVar = (scoreColor) => {
 }
 
 const getMainAuditsWithMetadata = (lighthouseResults) => {
+    if (!lighthouseResults) return []
     return [
         {
             ...lighthouseResults.audits['first-contentful-paint'],
