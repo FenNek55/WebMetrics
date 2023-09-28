@@ -1,7 +1,6 @@
 import styles from './LighthouseResults.module.scss';
 import { useMemo } from 'react';
-import { CircularProgressbar } from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
+import CircularProgress from '../CircularProgress/CircularProgress';
 // https://developer.chrome.com/docs/lighthouse/performance/performance-scoring/
 
 const getScoreColor = (score) => {
@@ -13,7 +12,7 @@ const getScoreColor = (score) => {
 const scoreColorToVar = (scoreColor) => {
     if (scoreColor === 'green') return 'var(--color-success)'
     if (scoreColor === 'orange') return 'var(--color-warning)'
-    return 'var(--color-danger)'
+    return 'var(--color-error)'
 }
 
 const getMainAuditsWithMetadata = (lighthouseResults) => {
@@ -69,7 +68,8 @@ const getTotalScore = (auditsWithMetadata) => {
 const getProgressbarStyles = (score) => {
     return {
         path: {
-            stroke: scoreColorToVar(getScoreColor(score))
+            stroke: scoreColorToVar(getScoreColor(score)),
+            transition: 'stroke-dashoffset 1s ease-in-out'
         },
         trail: {
             stroke: '#d6d6d6'
@@ -92,7 +92,7 @@ const LighthouseResults = ({ lighthouseResults }) => {
         <section className={styles['lighthouse-results']}>
             <h4>Google Lighthouse performance results:</h4>
             <div className={styles['lighthouse-results__score-wrapper']}>
-                <CircularProgressbar value={totalScore * 100} text={totalScore * 100} styles={progressbarStyles} strokeWidth={4}/>
+                <CircularProgress styles={progressbarStyles} valueStart={0} valueEnd={totalScore * 100} />
             </div>
             <div className={styles['lighthouse-results__cards-wrapper']}>
             {
