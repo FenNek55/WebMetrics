@@ -1,5 +1,4 @@
 from selenium import webdriver
-import json
 
 js_get_favicon = '''
     var favicon = undefined;

@@ -62,7 +62,7 @@ const getTotalScore = (auditsWithMetadata) => {
         return acc + audit.score * audit.weight
     }, 0)
 
-    return Math.round(totalScore * 100) / 100
+    return totalScore.toFixed(2)
 }
 
 const getProgressbarStyles = (score) => {
