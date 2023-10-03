@@ -62,7 +62,7 @@ const getTotalScore = (auditsWithMetadata) => {
         return acc + audit.score * audit.weight
     }, 0)
 
-    return totalScore.toFixed(2)
+    return (totalScore * 100).toFixed(0)
 }
 
 const getProgressbarStyles = (score) => {
@@ -86,13 +86,13 @@ const getProgressbarStyles = (score) => {
 const LighthouseResults = ({ lighthouseResults }) => {
     const mainAudits = useMemo(() => getMainAuditsWithMetadata(lighthouseResults), [lighthouseResults])
     const totalScore = useMemo(() => getTotalScore(mainAudits), [mainAudits])
-    const progressbarStyles = useMemo(() => getProgressbarStyles(totalScore), [totalScore])
+    const progressbarStyles = useMemo(() => getProgressbarStyles(totalScore / 100), [totalScore])
 
     return (
         <section className={styles['lighthouse-results']}>
             <h4>Google Lighthouse performance results:</h4>
             <div className={styles['lighthouse-results__score-wrapper']}>
-                <CircularProgress styles={progressbarStyles} valueStart={0} valueEnd={totalScore * 100} />
+                <CircularProgress styles={progressbarStyles} valueStart={0} valueEnd={totalScore} />
             </div>
             <div className={styles['lighthouse-results__cards-wrapper']}>
             {
