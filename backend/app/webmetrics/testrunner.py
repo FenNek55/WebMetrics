@@ -1,6 +1,6 @@
 import time
 from selenium import webdriver
-from .models.response import Response, BaseResponse
+from .schemas.response import Response, BaseResponse
 from . import driver_scripts
 from .services.google_pagespeed import get_google_pagespeed_results
 
