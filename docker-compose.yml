@@ -9,6 +9,8 @@ services:
       - ./web-metrics-frontend/public:/app/public
       - ./web-metrics-frontend/cypress:/app/cypress
     restart: always
+    environment:
+      - CHOKIDAR_USEPOLLING=true
 
   chrome:
     image: selenium/node-chrome:4.13.0-20231004
