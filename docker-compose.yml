@@ -5,7 +5,10 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./web-metrics-frontend:/app
+      - ./web-metrics-frontend/app:/app/app
+      - ./web-metrics-frontend/public:/app/public
+      - ./web-metrics-frontend/cypress:/app/cypress
+    restart: always
 
   chrome:
     image: selenium/node-chrome:4.13.0-20231004
@@ -29,3 +32,5 @@ services:
     build: ./backend
     ports:
       - "8080:8080"
+    volumes:
+      - ./backend:/usr/src/app
