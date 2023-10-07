@@ -9,6 +9,7 @@ import { useSelector } from "react-redux"
 const Home = ()=> {
   const storedTestResults = useSelector(state => state.testResults.testResults)
   const testResultsAreLoading = useSelector(state => state.loadingState.testResultsAreLoading)
+  const loadingStatus = useSelector(state => state.loadingState.loadingStatus)
 
   return (
     <main className="container" style={{paddingTop: '64px'}}>
@@ -16,6 +17,7 @@ const Home = ()=> {
       {testResultsAreLoading && (
       <div className="loader-container">
         <BaseLoader/>
+        <p className="loader-text">{loadingStatus}</p>
       </div>
       )}
       {(storedTestResults && !testResultsAreLoading) && <LighthouseResults lighthouseResults={storedTestResults.google_pagespeed.lighthouseResult}/>}

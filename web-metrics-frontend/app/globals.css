@@ -88,7 +88,9 @@ p {
 
 .loader-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  row-gap: 24px;
   align-items: center;
   height: 100%;
 }

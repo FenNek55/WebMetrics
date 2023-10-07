@@ -1,9 +1,9 @@
 "use client"
 
 import styles from './TestForm.module.css';
-import { useState } from 'react'
+import { useState, useId } from 'react'
 import { setTestResults } from "@/app/redux/features/testResults"
-import { setTestResultsAreLoading } from '@/app/redux/features/loadingState';
+import { setTestResultsAreLoading, setLoadingStatus } from '@/app/redux/features/loadingState';
 import { useDispatch, useSelector } from 'react-redux';
 
 const validateUrl = (url) => {
@@ -24,7 +24,8 @@ const validateUrl = (url) => {
 }
 
 const TestForm = () => {
-    const wsUrl = 'ws://localhost:8080/?token=123'
+    const randomId = useId()
+    const wsUrl = 'ws://localhost:8080/ws/' + randomId
     const [url, setUrl] = useState('')
     const [error, setError] = useState('')
 
@@ -49,13 +50,16 @@ const TestForm = () => {
 
       const ws = new WebSocket(wsUrl)
       dispatch(setTestResultsAreLoading(true))
+      dispatch(setLoadingStatus('connecting to server...'))
   
       ws.onopen = () => {
         ws.send(url)
+        dispatch(setLoadingStatus('running tests...'))
       }
 
       ws.onclose = () => {
         dispatch(setTestResultsAreLoading(false))
+        dispatch(setLoadingStatus(null))
       }
   
       ws.onmessage = (e) => {

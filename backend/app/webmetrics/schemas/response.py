@@ -1,9 +1,5 @@
 from pydantic import BaseModel
 
-class Metrics(BaseModel):
-    name: str
-    value: float
-
 class BaseResponse(BaseModel):
     url: str
     status: str

@@ -10,9 +10,10 @@ load_env_variables()
 
 app = FastAPI()
 
-@app.websocket("/")
+@app.websocket("/ws/{id}")
 async def websocket_endpoint(
     websocket: WebSocket,
+    id: str,
 ):
     await websocket.accept()
     testrunner = TestRunner(get_remote_chrome_driver())
