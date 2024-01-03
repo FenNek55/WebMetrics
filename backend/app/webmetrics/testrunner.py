@@ -24,10 +24,6 @@ def get_response_data(driver: webdriver.Remote, url: str):
         twitter_image = driver_scripts.get_twitter_image(driver),
         google_pagespeed = get_google_pagespeed_results(url),
     )
-    
-class TestRunner:
-    def __init__(self, driver: webdriver.Remote) -> None:
-        self.driver = driver
 
 class TestRunner:
     def __init__(self, driver: webdriver.Remote) -> None:
